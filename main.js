@@ -1,4 +1,6 @@
+// Функция для адаптивной работы страницы
 function pageStart() {
+    // Объявление основных переменных и запросов
     var swiper = null;
     var currentWidth = window.innerWidth;
     var timeoutId = null;
@@ -6,6 +8,7 @@ function pageStart() {
     var scrollWriper = document.querySelector('.list-wrapper');
     var scrollSlide = document.querySelectorAll('.list-slide');
 
+    //Функция инициализации Swiper
     function swiperInit() {
         if (window.innerWidth < 768) {
             scroll.classList.add('swiper');
@@ -29,6 +32,7 @@ function pageStart() {
         }
     }
 
+    //Функция удаления Swiper
     function swiperDestroy() {
         if (swiper) {
             swiper.destroy(true, true);
@@ -42,6 +46,7 @@ function pageStart() {
 
         }
     }
+    //Функция отслеживания текущего разрешения окна
     const handleResize = () => {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
@@ -67,13 +72,12 @@ function pageStart() {
 }
 const pageControl = pageStart();
 pageControl.init();
-
+// Обработка нажатий кнопок
 var hiddenSlide = document.querySelectorAll('.list-slide--hidde');
 var moreButton = document.querySelector('.more__button');
 var sectionMore = document.querySelector('.more');
 var sectionHidden = document.querySelector('.hidden');
 var hiddenButton = document.querySelector('.hidden__button');
-
 
 moreButton.addEventListener('click', e => {
     hiddenSlide.forEach(slide => {
@@ -85,6 +89,15 @@ moreButton.addEventListener('click', e => {
 })
 
 hiddenButton.addEventListener('click', e => {
+    hiddenSlide.forEach(slide => {
+        slide.classList.add('--hidden')
+    })
+    sectionMore.classList.remove('--hidden');
+    sectionHidden.classList.add('--hidden');
+})
+
+// Откат к изначальному состоянию при изменении размера окна
+addEventListener("resize", e => {
     hiddenSlide.forEach(slide => {
         slide.classList.add('--hidden')
     })
