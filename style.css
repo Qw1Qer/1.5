@@ -12,13 +12,25 @@ button {
     margin: 0;
 }
 .brands {
-    background-color: #F8F8F8;
     border-top: 1px solid aquamarine;
+    margin: 0 auto;
+    width: 320px;
 }
+.list {
+    background-color: #F8F8F8;
+    padding-top: 10px;
+    padding-bottom: 16px;
+}
+
+.list-wrapper {
+    height :160px;
+}
+
+
 .brands__shadow{
     position: absolute;
     right: 0;
-    top: 90px;
+    top: 0;
     width: 35px;
     height: 81px;
     background: linear-gradient(270deg, #F8F8F8 16.84%, rgba(248, 248, 248, 0.0001) 100%);
@@ -78,7 +90,7 @@ button {
     left: 17px;
     top: 14px;
 }
-.more , .hidden {
+.brands__button {
     display: none;
 }
 
@@ -97,52 +109,63 @@ button {
     margin-left: 6px!important;
 }
 
-    @media (min-width: 768px) {
-        .list-wrapper {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            row-gap: 16px;
-            margin-left: 4px;
 
-        }
-        .brands__text {
-            height: 56px;
-            padding-left: 24px;
-        }
-        .brands__shadow {
-            display: none;
-        }
+@media (min-width: 768px) {
 
-
-        .more, .hidden {
-            position: relative;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            left: 15px;
-            top: 16px;
-        }
-        .more__button , .hidden__button {
-            width: 24px;
-            height: 24px;
-        }
-        .hidden__button img {
-            transform: rotate(180deg);
-        }
-        .--hidden{
-            display: none;
-
-        }
-       .swiper-pagination{
-           display: none;
-       }
+    .brands {
+        width: 768px;
 
     }
+    .list-wrapper {
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        row-gap: 16px;
+        column-gap: 6px;
+        margin-left: 4px;
+
+    }
+    .brands__text {
+        height: 56px;
+        padding-left: 24px;
+    }
+    .brands__shadow {
+        display: none;
+    }
+
+
+    .brands__button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 16px;
+        margin-left: 26px;
+    }
+
+    .more__button {
+        width: 24px;
+        height: 24px;
+    }
+    .hidden__button img {
+        transform: rotate(180deg);
+    }
+
+    .swiper-pagination{
+           display: none;
+    }
+    .arrow--top{
+        transform: rotate(180deg);
+    }
+
+}
 
 @media (min-width: 1120px) {
 
+    .brands {
+        width: 1120px;
+    }
     .list-slide:nth-child(4),.list-slide:nth-child(8)  {
         display: unset;
     }
@@ -151,10 +174,14 @@ button {
     }
     .list-wrapper {
         margin-left: 12px;
+        column-gap: 32px;
     }
     .more, .hidden {
         left: 25px;
         top: 24px;
+    }
+    .overflow {
+        overflow: hidden;
     }
 }
 

@@ -73,37 +73,27 @@ function pageStart() {
 const pageControl = pageStart();
 pageControl.init();
 // Обработка нажатий кнопок
-var hiddenSlide = document.querySelectorAll('.list-slide--hidde');
+var hiddenSlide = document.querySelector('.list-wrapper');
 var moreButton = document.querySelector('.more__button');
-var sectionMore = document.querySelector('.more');
-var sectionHidden = document.querySelector('.hidden');
-var hiddenButton = document.querySelector('.hidden__button');
+var labelButton = document.querySelector('.more__label');
 
-moreButton.addEventListener('click', e => {
-    hiddenSlide.forEach(slide => {
-        slide.classList.remove('--hidden')
-    })
-    sectionMore.classList.add('--hidden');
-    sectionHidden.classList.remove('--hidden');
 
-})
+moreButton.addEventListener('click' , function(evt) {
+   evt.preventDefault();
 
-hiddenButton.addEventListener('click', e => {
-    hiddenSlide.forEach(slide => {
-        slide.classList.add('--hidden')
-    })
-    sectionMore.classList.remove('--hidden');
-    sectionHidden.classList.add('--hidden');
-})
+    if (labelButton.textContent === "Скрыть") {
+        labelButton.textContent = "Показать все";
+        hiddenSlide.style.height = "160px";
+        moreButton.classList.toggle('arrow--top');
 
-// Откат к изначальному состоянию при изменении размера окна
-addEventListener("resize", e => {
-    hiddenSlide.forEach(slide => {
-        slide.classList.add('--hidden')
-    })
-    sectionMore.classList.remove('--hidden');
-    sectionHidden.classList.add('--hidden');
-})
+
+    } else if (labelButton.textContent === "Показать все") {
+        labelButton.textContent = "Скрыть";
+        hiddenSlide.style.height = "auto";
+        moreButton.classList.toggle('arrow--top');
+    }
+});
+
 
 
 
